@@ -1,0 +1,34 @@
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: table;
+  width: 100%;
+}
+
+li > * {
+  display: table-cell;
+}
+
+.page {
+  width: 550px;
+}
+
+.user-list-header {
+  display: table;
+  width: 100%;
+}
+
+.user-list-header > * {
+  display: table-cell;
+}
+
+.user-list-header > p {
+  width: 120px;
+}
+
+.user-item > p {
+  width: 80px;
+}
