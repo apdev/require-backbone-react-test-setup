@@ -36,14 +36,11 @@ describe("view user list", function() {
 
   describe("should create with 3 items", function() {
 
-    var ViewUserList,
-      userCollection;
-
     it("", function(done) {
 
       requirejs(["jsx!app/view/view_user_list", "app/model/user_collection"], function(ViewUserList, UserCollection) {
 
-        userCollection = new UserCollection([
+        var userCollection = new UserCollection([
           {id: 1, name: "Tim", age: 10},
           {id: 2, name: "Ida", age: 10},
           {id: 3, name: "Rob", age: 10}
@@ -65,14 +62,11 @@ describe("view user list", function() {
 
   describe("should create with 5 items and display next button", function() {
 
-    var ViewUserList,
-      userCollection;
-
     it("", function(done) {
 
       requirejs(["jsx!app/view/view_user_list", "app/model/user_collection"], function(ViewUserList, UserCollection) {
 
-        userCollection = new UserCollection([
+        var userCollection = new UserCollection([
           {id: 1, name: "Tim", age: 10},
           {id: 2, name: "Ida", age: 10},
           {id: 3, name: "Rob", age: 10},

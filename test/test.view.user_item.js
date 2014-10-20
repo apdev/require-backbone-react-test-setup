@@ -36,14 +36,11 @@ describe("view user item", function() {
 
   describe("should create item", function() {
 
-    var ViewUserItem,
-      userModel;
-
     it("", function(done) {
 
       requirejs(["jsx!app/view/view_user_item", "app/model/user_model"], function(ViewUserItem, UserModel) {
 
-        userModel = new UserModel(
+        var userModel = new UserModel(
           {id: 1, name: "Tim", age: 10}
         );
 
@@ -62,14 +59,11 @@ describe("view user item", function() {
 
   describe("should create item and mark current user ('you!')", function() {
 
-    var ViewUserItem,
-      userModel;
-
     it("", function(done) {
 
       requirejs(["jsx!app/view/view_user_item", "app/model/user_model"], function(ViewUserItem, UserModel) {
 
-        userModel = new UserModel(
+        var userModel = new UserModel(
           {id: 1, name: "Tim", age: 10}
         );
 
