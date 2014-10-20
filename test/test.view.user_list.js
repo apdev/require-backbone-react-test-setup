@@ -7,17 +7,15 @@ var document;
 var window;
 
 var requirejs = require("requirejs");
+var requireConfig = require("../src/js/frontend.js");
+
+// force to require "node version"
+delete requireConfig.paths.react;
 
 requirejs.config({
   baseUrl: "src/js/",
   nodeRequire: require,
-  paths: {
-    "underscore": "vendor/lodash.compat.2.4.1",
-    "backbone": "vendor/backbone.1.1.2",
-    "JSXTransformer": "vendor/plugins/JSXTransformer.0.10.0",
-    "jsx": "vendor/plugins/require.jsx.0.1.0",
-    "text": "vendor/plugins/require.text.2.0.10"
-  }
+  paths: requireConfig.paths
 });
 
 describe("view user list", function() {

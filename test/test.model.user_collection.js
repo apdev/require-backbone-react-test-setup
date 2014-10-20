@@ -1,19 +1,34 @@
-"use strict";
-
 var should = require("should");
+var jsdom = require("jsdom");
+
+var document;
+var window;
 
 var requirejs = require("requirejs");
+var requireConfig = require("../src/js/frontend.js");
+
+// force to require "node version"
+delete requireConfig.paths.react;
+
 requirejs.config({
   baseUrl: "src/js/",
   nodeRequire: require,
-  paths: {
-    "underscore": "vendor/lodash.compat.2.4.1",
-    "backbone": "vendor/backbone.1.1.2",
-    "models": "models"
-  }
+  paths: requireConfig.paths
 });
 
-describe("user collection", function(){
+describe("view user list", function() {
+
+  before(function() {
+    global.window = jsdom.jsdom().createWindow("<html><body></body></html>");
+    global.document = global.window.document;
+    global.navigator = global.window.navigator;
+  });
+
+  afterEach(function() {
+    delete global.window;
+    delete global.document;
+    delete global.navigator;
+  });
 
   describe("should calculate average age ", function() {
 
@@ -33,10 +48,13 @@ describe("user collection", function(){
         {id: 2, name: "Ida", age: 12},
         {id: 3, name: "Rob", age: 14}
       ], {parse: true});
+
       collection.averageAge.should.equal(12);
+
       done();
 
     });
 
   });
+
 });
