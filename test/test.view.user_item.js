@@ -5,6 +5,7 @@ var utils;
 
 var document;
 var window;
+var $;
 
 var requirejs = require("requirejs");
 var requireConfig = require("../src/js/frontend.js");
@@ -45,10 +46,10 @@ describe("view user item", function() {
         );
 
         var view = utils.renderIntoDocument(new ViewUserItem({model: userModel}));
-        var h3 = utils.findRenderedDOMComponentWithTag(view, "h3");
-        h3.getDOMNode().textContent.should.equal("Tim");
-        var p = utils.findRenderedDOMComponentWithTag(view, "p");
-        p.getDOMNode().textContent.should.equal("Age: 10");
+        $ = require("jquery")(view.getDOMNode());
+
+        $.find("h3").get(0).textContent.should.equal("Tim");
+        $.find("p").get(0).textContent.should.equal("Age: 10");
 
         done();
       });
@@ -68,10 +69,10 @@ describe("view user item", function() {
         );
 
         var view = utils.renderIntoDocument(new ViewUserItem({model: userModel, myUserId: 1}));
-        var h3 = utils.findRenderedDOMComponentWithTag(view, "h3");
-        h3.getDOMNode().textContent.should.equal("Tim (you!)");
-        var p = utils.findRenderedDOMComponentWithTag(view, "p");
-        p.getDOMNode().textContent.should.equal("Age: 10");
+        $ = require("jquery")(view.getDOMNode());
+
+        $.find("h3").get(0).textContent.should.equal("Tim (you!)");
+        $.find("p").get(0).textContent.should.equal("Age: 10");
 
         done();
       });

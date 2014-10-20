@@ -5,6 +5,7 @@ var utils;
 
 var document;
 var window;
+var $;
 
 var requirejs = require("requirejs");
 var requireConfig = require("../src/js/frontend.js");
@@ -47,11 +48,10 @@ describe("view user list", function() {
         ]);
 
         var view = utils.renderIntoDocument(new ViewUserList({userCollection: userCollection}));
-        var children = utils.findRenderedDOMComponentWithClass(view, "user-list").props.children;
-        children.length.should.equal(3);
-        (function(){
-          utils.findRenderedDOMComponentWithClass(view, "pagination-next");
-        }).should.throw();
+        $ = require("jquery")(view.getDOMNode());
+
+        $.find(".user-item").length.should.equal(3);
+        $.find(".pagination-next").length.should.equal(0);
 
         done();
       });
@@ -75,10 +75,10 @@ describe("view user list", function() {
         ]);
 
         var view = utils.renderIntoDocument(new ViewUserList({userCollection: userCollection}));
-        var children = utils.findRenderedDOMComponentWithClass(view, "user-list").props.children;
-        children.length.should.equal(5);
-        // throws if not found
-        utils.findRenderedDOMComponentWithClass(view, "pagination-next");
+        $ = require("jquery")(view.getDOMNode());
+
+        $.find(".user-item").length.should.equal(5);
+        $.find(".pagination-next").length.should.equal(1);
 
         done();
       });
